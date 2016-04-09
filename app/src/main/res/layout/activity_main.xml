@@ -1,16 +1,43 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context=".MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              tools:context=".MainActivity"
+              android:background="@color/main_bg_color"
+              android:orientation="vertical">
 
-    <TextView
-        android:text="@string/hello_world"
+    <Switch
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/CustomSwitch"/>
 
-</RelativeLayout>
+    <com.kyleduo.switchbutton.SwitchButton
+        android:id="@+id/sb_text"
+        style="@style/SwitchButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/main_color"
+        android:textSize="16sp"
+        android:checked="false"
+        app:kswThumbDrawable="@drawable/ic_svich"
+        app:kswBackMeasureRatio="2.3"
+        app:kswTextOff="OFF"
+        app:kswBackDrawable="@drawable/switch_bg"
+
+        app:kswTextMarginH="0dp"
+        app:kswThumbMarginBottom="-3dp"
+        app:kswThumbMarginLeft="-1.5dp"
+        app:kswThumbMarginRight="-2.5dp"
+        app:kswThumbMarginTop="-0.4dp"/>
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/CustomSeekBar"
+        android:layout_below="@id/CustomSwitch"
+        style="@style/SeekBarsolo"/>
+</LinearLayout>

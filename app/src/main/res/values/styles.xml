@@ -5,4 +5,24 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="solo" parent="@style/_solo"/>
+
+    <style name="_solo" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:seekBarStyle">@style/SeekBarsolo</item>
+        <item name="android:buttonStyleToggle">@style/Togglesolo</item>
+    </style>
+
+    <style name="SwitchButtonStyle">
+
+    </style>
+
+    <style name="SeekBarsolo" parent="android:Widget.Holo.Light.SeekBar">
+        <item name="android:progressDrawable">@drawable/solo_scrubber_progress_horizontal_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/solo_scrubber_progress_horizontal_holo_light</item>
+        <item name="android:thumb">@drawable/solo_scrubber_control_selector_holo_light</item>
+    </style>
+
+    <style name="Togglesolo" parent="android:Widget.Holo.Light.Button.Toggle">
+        <item name="android:background">@drawable/solo_btn_toggle_holo_light</item>
+    </style>
 </resources>
