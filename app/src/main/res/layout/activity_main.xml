@@ -25,12 +25,14 @@
         android:textSize="16sp"
         android:checked="false"
         app:kswThumbDrawable="@drawable/ic_svich"
-        app:kswBackMeasureRatio="2.3"
+        app:kswThumbWidth="36dp"
+        app:kswThumbHeight="36dp"
+        app:kswBackMeasureRatio="2"
         app:kswTextOff="OFF"
         app:kswBackDrawable="@drawable/switch_bg"
 
         app:kswTextMarginH="0dp"
-        app:kswThumbMarginBottom="-3dp"
+        app:kswThumbMarginBottom="-3.6dp"
         app:kswThumbMarginLeft="-1.5dp"
         app:kswThumbMarginRight="-2.5dp"
         app:kswThumbMarginTop="-0.4dp"/>
