@@ -3,18 +3,17 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:paddingLeft="@dimen/activity_horizontal_margin"
-              android:paddingRight="@dimen/activity_horizontal_margin"
-              android:paddingTop="@dimen/activity_vertical_margin"
-              android:paddingBottom="@dimen/activity_vertical_margin"
+              android:padding="16dp"
               tools:context=".MainActivity"
+              android:gravity="bottom|center"
               android:background="@color/main_bg_color"
               android:orientation="vertical">
 
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/CustomSwitch"/>
+        android:id="@+id/CustomSwitch"
+        android:layout_margin="58dp"/>
 
     <com.kyleduo.switchbutton.SwitchButton
         android:id="@+id/sb_text"
@@ -24,6 +23,7 @@
         android:textColor="@color/main_color"
         android:textSize="16sp"
         android:checked="false"
+        android:layout_margin="58dp"
         app:kswThumbDrawable="@drawable/ic_svich"
         app:kswThumbWidth="36dp"
         app:kswThumbHeight="36dp"
@@ -42,4 +42,10 @@
         android:id="@+id/CustomSeekBar"
         android:layout_below="@id/CustomSwitch"
         style="@style/SeekBarsolo"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:id="@+id/btnButton"
+        android:layout_margin="58dp"/>
 </LinearLayout>
