@@ -2,13 +2,17 @@ package com.example.oliver.customviews;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.github.amlcurran.showcaseview.OnShowcaseEventListener;
@@ -17,17 +21,28 @@ import com.github.amlcurran.showcaseview.SimpleShowcaseEventListener;
 import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
 import com.github.amlcurran.showcaseview.targets.Target;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
+import com.kyleduo.switchbutton.SwitchButton;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Random;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
+    ShowcaseView showcaseView;
+    Switch mSwitch;
+    SwitchButton mSwitchButton;
+    SeekBar mSeekBar;
+    Button mButton;
+    Random r = new Random();
+    private int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Target viewTarget = new ViewTarget(R.id.sb_text, this);
-        final ShowcaseView showcaseView = new ShowcaseView.Builder(this)
+        initViews();
+        Target viewTarget = new ViewTarget(R.id.CustomSwitch, this);
+        showcaseView = new ShowcaseView.Builder(this)
                 .setTarget(viewTarget)
                 .setContentTitle("Title ")
                 .setContentText("Message")
@@ -40,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .setStyle(R.style.CustomShowcaseTheme3)
+                .setOnClickListener(this)
                 .build();
 
         RelativeLayout.LayoutParams lps = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -50,25 +66,35 @@ public class MainActivity extends AppCompatActivity {
         showcaseView.setButtonPosition(lps);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    private void initViews() {
+        mSwitch = (Switch) findViewById(R.id.CustomSwitch);
+        mSwitchButton = (SwitchButton) findViewById(R.id.sb_text);
+        mSeekBar = (SeekBar) findViewById(R.id.CustomSeekBar);
+        mButton = (Button) findViewById(R.id.btnButton);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void onClick(View v) {
+        counter++;
+        showcaseView.setContentText("Counter: " + counter);
+        Log.d(TAG, "get showCaseX " + showcaseView.getShowcaseX()  + " y: " + showcaseView.getShowcaseY());
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (counter) {
+            case 0:
+                showcaseView.setShowcase(new ViewTarget(mSwitch), true);
+                break;
+            case 1:
+                showcaseView.setShowcase(new ViewTarget(mSwitchButton), true);
+                break;
+            case 2:
+                showcaseView.setShowcase(new ViewTarget(mSeekBar), true);
+                break;
+            case 3:
+                showcaseView.setShowcase(new ViewTarget(mButton), true);
+                counter = -1;
+                break;
         }
 
-        return super.onOptionsItemSelected(item);
+
     }
 }
